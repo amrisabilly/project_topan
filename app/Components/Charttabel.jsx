@@ -5,107 +5,73 @@ Chart.register(BarController, BarElement, CategoryScale, LinearScale, Legend, To
 
 const SmoothChart = () => {
   const chartRef = useRef(null);
-  const [progress, setProgress] = useState(0); // Progres saat ini (0-1)
-  const [targetProgress, setTargetProgress] = useState(0); // Progres target
-  const animationFrameRef = useRef(); // Menyimpan ID requestAnimationFrame
-  const chartInstanceRef = useRef(null); // Menyimpan instance chart untuk menghindari pembuatan ulang
+  const [progress, setProgress] = useState(0);
+  const [targetProgress, setTargetProgress] = useState(0);
+  const animationFrameRef = useRef();
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const element = chartRef.current.parentNode; // Ambil elemen pembungkus (container)
+      if (!chartRef.current) return;
+      const element = chartRef.current.parentNode;
+      if (!element) return;
+
       const rect = element.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Hitung tinggi elemen yang terlihat
       const elementTop = rect.top;
       const elementHeight = rect.height;
 
       const visiblePart = Math.min(Math.max(windowHeight - elementTop, 0), elementHeight);
-      const scrollProgress = visiblePart / elementHeight; // Nilai antara 0 dan 1
+      const scrollProgress = visiblePart / elementHeight;
 
-      setTargetProgress(scrollProgress); // Perbarui progres target
+      setTargetProgress(scrollProgress);
     };
 
-    // Tambahkan event listener untuk scroll
     window.addEventListener('scroll', handleScroll);
-    // Panggil handleScroll sekali untuk set targetProgress awal
     handleScroll();
+
     return () => {
-      // Hapus event listener untuk menghindari kebocoran memori
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   useEffect(() => {
+    if (!chartRef.current) return; // Pastikan chartRef tidak null
     const ctx = chartRef.current.getContext('2d');
 
-    // Data awal untuk grafik
     const initialData = {
       labels: ['2010', '2011', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
       datasets: [
-        {
-          label: 'National',
-          data: Array(15).fill(0), // Semua nilai awal 0
-          backgroundColor: '#FD3E12', // Warna merah
-        },
-        {
-          label: 'International',
-          data: Array(15).fill(0), // Semua nilai awal 0
-          backgroundColor: '#FFE452', // Warna kuning
-        },
+        { label: 'National', data: Array(15).fill(0), backgroundColor: '#FD3E12' },
+        { label: 'International', data: Array(15).fill(0), backgroundColor: '#FFE452' },
       ],
     };
 
-    // Konfigurasi Chart.js
     const config = {
       type: 'bar',
       data: initialData,
       options: {
         responsive: true,
-        animation: false, // Nonaktifkan animasi default Chart.js
+        animation: false,
         plugins: {
-          legend: {
-            position: 'top',
-            labels: {
-              color: '#FFFFFF', // Warna teks legenda
-            },
-          },
-          tooltip: {
-            enabled: true,
-          },
+          legend: { position: 'top', labels: { color: '#FFFFFF' } },
+          tooltip: { enabled: true },
         },
         scales: {
-          x: {
-            stacked: true,
-            ticks: {
-              color: '#FFFFFF', // Warna label sumbu X
-            },
-          },
+          x: { stacked: true, ticks: { color: '#FFFFFF' } },
           y: {
             stacked: true,
-            ticks: {
-              color: '#FFFFFF', // Warna label sumbu Y
-              callback: function (value) {
-                return value + ' Billion USD';
-              },
-            },
-            title: {
-              display: true,
-              text: 'Billion USD',
-              color: '#FFFFFF', // Warna judul sumbu
-            },
+            ticks: { color: '#FFFFFF', callback: (value) => `${value} Billion USD` },
+            title: { display: true, text: 'Billion USD', color: '#FFFFFF' },
           },
         },
-        layout: {
-          padding: 10, // Padding tata letak
-        },
+        layout: { padding: 10 },
       },
     };
 
-    // Buat chart jika belum ada
     if (!chartInstanceRef.current) {
-      const newChartInstance = new Chart(ctx, config);
-      chartInstanceRef.current = newChartInstance;
+      chartInstanceRef.current = new Chart(ctx, config);
     }
   }, []);
 
@@ -116,10 +82,9 @@ const SmoothChart = () => {
 
       const animate = () => {
         const delta = targetProgress - progress;
-        const increment = delta * 0.1; // Sesuaikan multiplier untuk kehalusan (0 < multiplier <= 1)
+        const increment = delta * 0.1;
 
         if (Math.abs(delta) < 0.001) {
-          // Hentikan animasi jika perbedaan sangat kecil
           setProgress(targetProgress);
           cancelAnimationFrame(animationFrameRef.current);
           return;
@@ -128,7 +93,6 @@ const SmoothChart = () => {
         const newProgress = progress + increment;
         setProgress(newProgress);
 
-        // Update data grafik berdasarkan progress baru
         const newNationalData = actualDataNational.map((value) => value * newProgress);
         const newInternationalData = actualDataInternational.map((value) => value * newProgress);
 
@@ -136,15 +100,11 @@ const SmoothChart = () => {
         chartInstanceRef.current.data.datasets[1].data = newInternationalData;
 
         chartInstanceRef.current.update();
-
-        // Minta frame animasi berikutnya
         animationFrameRef.current = requestAnimationFrame(animate);
       };
 
-      // Mulai animasi
       animationFrameRef.current = requestAnimationFrame(animate);
 
-      // Membersihkan animasi saat komponen unmount atau targetProgress berubah
       return () => {
         cancelAnimationFrame(animationFrameRef.current);
       };
@@ -159,5 +119,3 @@ const SmoothChart = () => {
 };
 
 export default SmoothChart;
-
-
