@@ -18,7 +18,7 @@ import EfekBencana from "../public/efek1.jpg"
 import PencarianOrang from "../app/Components/PencarianOrang"
 import BgCarousel from "../public/BgCarousel.jpg"
 import Carousel from "../app/Components/Carousel"
-
+import FooterComponent from "../app/Components/FooterComponents"
 
 
 export default function Home() {
@@ -196,9 +196,9 @@ export default function Home() {
                   </motion.button>
                 </div>
 
-                <div className="space-y-5 mt-10">
+                <div className=" mt-10">
                   <motion.div
-                    className="w-full h-40 bg-[#FD3E12] container-proses flex items-center gap-5"
+                    className="w-full h-32 bg-[#FD3E12] container-proses flex items-center gap-5"
                     style={{ width: `${getProgress(2000, 100)}%` }} // Update width dynamically
                   >
                     <Image
@@ -213,7 +213,7 @@ export default function Home() {
                   </motion.div>
 
                   <motion.div
-                    className="w-full h-40 bg-[#FFA022] container-proses flex items-center ps-2"
+                    className="w-full h-32 bg-[#FFA022] container-proses flex items-center ps-2"
                     style={{ width: `${getProgress(2400, 100)}%` }}
                   >
                     <Image
@@ -228,7 +228,7 @@ export default function Home() {
                   </motion.div>
 
                   <motion.div
-                    className="w-full h-40 bg-[#FDC941] container-proses flex items-center ps-2"
+                    className="w-full h-32 bg-[#FDC941] container-proses flex items-center ps-2"
                     style={{ width: `${getProgress(2800, 100)}%` }}
                   >
                     <Image
@@ -243,7 +243,7 @@ export default function Home() {
                   </motion.div>
 
                   <motion.div
-                    className="w-full h-40 bg-[#FDE76F] container-proses flex items-center ps-7 gap-9"
+                    className="w-full h-32 bg-[#FDE76F] container-proses flex items-center ps-7 gap-9"
                     style={{ width: `${getProgress(3000, 100)}%` }}
                   >
                     <Image
@@ -258,7 +258,7 @@ export default function Home() {
                   </motion.div>
 
                   <motion.div
-                    className="w-full h-40 bg-[#FDFBB9] container-proses flex items-center ps-7 gap-9"
+                    className="w-full h-32 bg-[#FDFBB9] container-proses flex items-center ps-7 gap-9"
                     style={{ width: `${getProgress(3200, 100)}%` }}
                   >
                     <Image
@@ -279,7 +279,7 @@ export default function Home() {
           <h3 className='text-[25px] font-extrabold mb-10' data-aos="fade-up">Number of people affected by hurricanes in 2024. Hurricanes in the world include tornadoes, hailstorms, thunderstorms, sandstorms, blizzards, and high winds. The total number of people affected is the number of people who died, needed help (injured), and were homeless.</h3>
           <h4 className='text-[18px] font-semibold' data-aos="fade-up">Jumlah orang yang terkena dampak badai pada tahun 2024. Badai di dunia meliputi tornado, hujan es, badai petir, badai pasir, badai salju, dan angin kencang. Jumlah total orang yang terkena dampak adalah jumlah orang yang meninggal, membutuhkan bantuan (terluka), dan tuna wisma.</h4>
         </div>
-        <div className='container-chartjs mt-40'>
+        <div className='container-chartjs mt-28'>
           <Chartbulat/>
         </div>
       </div>
@@ -327,44 +327,7 @@ export default function Home() {
           </div>
 
       </div>
-
-      <div className="relative w-full h-auto bg-[#1B1B1B] text-white">
-  <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-6">
-    {/* Logo dan Deskripsi */}
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold text-[#FD3E12]"> Cyclone Shield</h2>
-      <p className="text-sm text-gray-400">
-      is a leading disaster response company specializing in providing innovative solutions and advanced technology to protect communities from the devastating impacts of cyclones and typhoons.
-      </p>
-    </div>
-
-    {/* Navigasi */}
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-[#FD3E12]">Quick Links</h3>
-      <ul className="text-sm text-gray-400 space-y-2">
-        <li><a href="#about" className="hover:text-white">About Us</a></li>
-        <li><a href="#services" className="hover:text-white">Services</a></li>
-        <li><a href="#careers" className="hover:text-white">Careers</a></li>
-        <li><a href="#contact" className="hover:text-white">Contact Us</a></li>
-      </ul>
-    </div>
-
-    {/* Kontak */}
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-[#FD3E12]">Contact</h3>
-      <p className="text-sm text-gray-400">
-        Email: <a href="mailto:info@yourcompany.com" className="hover:text-white">info@cycloneshield.com</a>
-      </p>
-      <p className="text-sm text-gray-400">Phone: +1 234 567 890</p>
-      <p className="text-sm text-gray-400">Address: 123 Innovation Street, Tech City</p>
-    </div>
-  </div>
-
-  {/* Footer Bottom */}
-  <div className="bg-[#0F0F0F] py-4 text-center text-sm text-gray-500">
-    <p>&copy; {new Date().getFullYear()} Cyclone Shield. All rights reserved.</p>
-  </div>
-</div>
+      <FooterComponent/>
     </div>
   );
 }
