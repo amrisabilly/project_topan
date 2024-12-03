@@ -50,7 +50,7 @@ const NavbarComponent = () => {
               className='text-white transition-colors duration-300 hover:text-red-600'
             />
             <div className='ms-4'>
-              <h3 className='text-[28px] font-extrabold'>Topan</h3>
+              <h3 className='text-[28px] font-extrabold'><span className='bg-red-600'>Geo</span>Typhoon</h3>
             </div>
           </div>
         </div>
