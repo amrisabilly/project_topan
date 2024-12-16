@@ -29,20 +29,20 @@ export default function Home() {
 
   const handleClick = () => {
     setIsRotated(!isRotated);
-    setIsDetailsVisible(!isDetailsVisible); // Menampilkan detail ketika tombol diklik
+    setIsDetailsVisible(!isDetailsVisible);
   };
   
 
-  // update state saat scroll terjadi
-  useEffect(() => {
+  
+    useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-
-    // event listener untuk scroll
+    
     window.addEventListener('scroll', handleScroll);
 
-    // Hapus event listener saat komponen dibersihkan
+
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -65,7 +65,7 @@ export default function Home() {
               <div className="text-start text-4xl font-extrabold">
                 <div className="w-[18em] mt-40 ms-10 relative z-20">
                   <h1 className="text-left">
-                    Kekuata alam paling dahsyat di bumi! dengan kecepatan bisa mencapai{" "}
+                    Kekuatan alam paling dahsyat di bumi! dengan kecepatan bisa mencapai{" "}
                     <span className="bg-[#FD3E12]">200km/jam</span> Topan dapat
                     menghancurkan bangunan, perkebunan, dan{" "}
                     <span className="bg-[#FD3E12]">ekosistem</span> Topan juga
@@ -93,7 +93,7 @@ export default function Home() {
                   <span className="bg-[#FD3E12]">30 kasus</span> topan besar <br />
                   yang menelan korban jiwa sebanyak
                 </h3>
-                <h1 className="text-[150px] font-extrabold">100Million</h1>
+                <h1 className="text-[150px] font-extrabold">30Cases</h1>
               </div>
             </div>
 
@@ -185,7 +185,7 @@ export default function Home() {
                             ease: "easeInOut",
                           }}
                           style={{
-                            originX: 0, // Animate from left to right
+                            originX: 0, 
                             zIndex: 1,
                           }}
                         >
@@ -199,7 +199,7 @@ export default function Home() {
                 <div className=" mt-10">
                   <motion.div
                     className="w-full h-32 bg-[#FD3E12] container-proses flex items-center gap-5"
-                    style={{ width: `${getProgress(2000, 100)}%` }} // Update width dynamically
+                    style={{ width: `${getProgress(2000, 100)}%` }} 
                   >
                     <Image
                       src={Mexico}
@@ -208,7 +208,7 @@ export default function Home() {
                     />
                     <div className="flex justify-between w-full pe-10 items-center text-black">
                       <h1 className="font-extrabold text-[30px]">Mexico</h1>
-                      <h1 className="font-extrabold text-[80px]">$392.376</h1>
+                      <h1 className="font-extrabold text-[80px] kasus">25%</h1>
                     </div>
                   </motion.div>
 
@@ -223,7 +223,7 @@ export default function Home() {
                     />
                     <div className="flex justify-between w-full pe-10 items-center text-black">
                       <h1 className="font-extrabold text-[30px]">Filipina</h1>
-                      <h1 className="font-extrabold text-[80px]">$392.376</h1>
+                      <h1 className="font-extrabold text-[80px] kasus">20%</h1>
                     </div>
                   </motion.div>
 
@@ -238,7 +238,7 @@ export default function Home() {
                     />
                     <div className="flex justify-between w-full pe-10 items-center text-black">
                       <h1 className="font-extrabold text-[30px]">China</h1>
-                      <h1 className="font-extrabold text-[80px]">$392.376</h1>
+                      <h1 className="font-extrabold text-[80px] kasus">15%</h1>
                     </div>
                   </motion.div>
 
@@ -253,7 +253,7 @@ export default function Home() {
                     />
                     <div className="flex justify-between w-full pe-10 items-center text-black">
                       <h1 className="font-extrabold text-[30px]">Jepang</h1>
-                      <h1 className="font-extrabold text-[80px]">$392.376</h1>
+                      <h1 className="font-extrabold text-[80px] kasus">30%</h1>
                     </div>
                   </motion.div>
 
@@ -268,7 +268,7 @@ export default function Home() {
                     />
                     <div className="flex justify-between w-full pe-10 items-center text-black">
                       <h1 className="font-extrabold text-[30px]">Amerika</h1>
-                      <h1 className="font-extrabold text-[80px]">$392.376</h1>
+                      <h1 className="font-extrabold text-[80px] kasus">10%</h1>
                     </div>
                   </motion.div>
                 </div>

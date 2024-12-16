@@ -11,12 +11,12 @@ import FooterComponents from '../Components/FooterComponents';
 const page = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Durasi animasi dalam milidetik
-      easing: 'ease-in-out', // Efek easing
-      once: true, // Animasi hanya dijalankan sekali
-      mirror: false, // Animasi tidak berjalan saat di-scroll kembali
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true, 
+      mirror: false,
     });
-    AOS.refresh(); // Segarkan AOS saat halaman di-load
+    AOS.refresh(); 
   }, []);
 
   return (
@@ -27,21 +27,22 @@ const page = () => {
           className="font-extrabold text-[30px] text-[#f4f4f4] w-[25em]"
           data-aos="fade-up"
         >
-          Countries who’ve done the least to cause the climate crisis are{' '}
-          <span className="bg-red-600">affected most by its impacts.</span>
+          Stay informed, stay safe-track the cyclone with us{' '}
+          <span className="bg-red-600">GeoTyphoon.</span>
         </h1>
       </div>
 
       <div className="text-black h-[40em] grid grid-cols-2 mb-20">
         {/* Kolom 1 */}
-        <div className="h-full relative" data-aos="fade-right">
+        <div className="h-full relative">
           <div className="absolute bottom-0 left-0 p-5">
             <h1 className="font-extrabold text-[30px] mb-3">
-              Sea levels rising, sustained heatwaves, increasingly severe bushfires, drought, hurricanes, and species extinction.
+              Mitigasi Bencana Topan
             </h1>
             <h3>
-              As global warming worsens, the negative impacts of climate damages will increase in frequency and severity. Developing countries are more vulnerable to the worst impacts of climate change and are less likely to have the resources to adequately respond or adapt. Yet they have contributed the least to the climate crisis.
-            </h3>
+            Mitigasi bencana topan merupakan serangkaian upaya yang dilakukan sebelum bencana terjadi dengan tujuan meminimalkan dampak yang ditimbulkan. Langkah mitigasi meliputi peningkatan kesadaran masyarakat melalui edukasi, seperti sosialisasi tentang tanda-tanda topan dan simulasi evakuasi yang rutin dilakukan. Selain itu, perencanaan tata ruang menjadi aspek penting dengan membatasi pembangunan di wilayah rawan bencana dan memastikan infrastruktur dirancang tahan terhadap angin kencang.
+
+Penerapan sistem peringatan dini juga menjadi bagian dari mitigasi, di mana teknologi digunakan untuk memantau cuaca dan memberikan informasi cepat kepada masyarakat melalui sirene, aplikasi, atau SMS. Di sisi lingkungan, penghijauan di daerah pesisir dengan menanam mangrove atau vegetasi pantai lainnya membantu mengurangi dampak angin kencang dan banjir. Sistem drainase yang baik juga dipastikan untuk mencegah banjir bandang yang sering menyertai topan.            </h3>
           </div>
         </div>
 
@@ -70,14 +71,17 @@ const page = () => {
         </div>
 
         {/* Kolom 1 */}
-        <div className="h-full relative" data-aos="fade-right">
+        <div className="h-full relative">
           <div className="absolute bottom-0 left-0 p-5">
             <h1 className="font-extrabold text-[30px] mb-3">
-              Sea levels rising, sustained heatwaves, increasingly severe bushfires, drought, hurricanes, and species extinction.
+              Penanggulangan Bencana Topan
             </h1>
             <h3>
-              As global warming worsens, the negative impacts of climate damages will increase in frequency and severity. Developing countries are more vulnerable to the worst impacts of climate change and are less likely to have the resources to adequately respond or adapt. Yet they have contributed the least to the climate crisis.
-            </h3>
+            Penanggulangan bencana topan mencakup upaya yang dilakukan saat dan setelah bencana terjadi untuk menyelamatkan masyarakat serta memulihkan kondisi wilayah terdampak. Dalam tahap tanggap darurat, posko evakuasi didirikan untuk memberikan perlindungan sementara dan menyediakan kebutuhan dasar, seperti makanan, air bersih, dan obat-obatan. Tim SAR dikerahkan untuk menyelamatkan korban, memberikan bantuan medis, serta mengevakuasi masyarakat yang terjebak.
+
+Distribusi bantuan dilakukan secara terorganisir, melibatkan pemerintah, organisasi kemanusiaan, dan masyarakat untuk memastikan kebutuhan logistik, seperti pakaian dan perlengkapan sanitasi, terpenuhi. Setelah kondisi stabil, rehabilitasi infrastruktur menjadi fokus utama, termasuk perbaikan rumah, fasilitas umum, dan jalan yang rusak. Dukungan ekonomi juga diberikan melalui bantuan modal untuk membantu masyarakat, terutama petani atau nelayan, kembali beraktivitas.
+
+Langkah penanggulangan ditutup dengan evaluasi dan analisis terhadap respons bencana, sehingga kekurangan yang ada dapat diperbaiki dan sistem penanganan di masa depan menjadi lebih efektif. Dengan penanggulangan yang baik, masyarakat terdampak dapat kembali bangkit dengan cepat.            </h3>
           </div>
         </div>
       </div>

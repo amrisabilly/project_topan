@@ -70,30 +70,32 @@ const NavbarComponent = () => {
             ))}
           </ul>
           <motion.button
-                    className="relative bg-transparent border border-white transition duration-700 ease-in-out hover:border-red-600 px-8 py-2 text-white font-extrabold ms-9 overflow-hidden"
-                    initial="rest"
-                    whileHover="hover"
-                    animate="rest"
-                    >
-                        <motion.div
-                          className="absolute inset-0 bg-red-600"
-                          variants={{
-                            rest: { scaleX: 0 },
-                            hover: { scaleX: 1 },
-                          }}
-                          transition={{
-                            duration: 0.5,
-                            ease: "easeInOut",
-                          }}
-                          style={{
-                            originX: 0, // Animate from left to right
-                            zIndex: 1,
-                          }}
-                        >
-                        </motion.div>
+  className="relative bg-transparent border border-white transition duration-700 ease-in-out hover:border-red-600 px-8 py-2 text-white font-extrabold ms-9 overflow-hidden"
+  initial="rest"
+  whileHover="hover"
+  animate="rest"
+>
+  <motion.div
+    className="absolute inset-0 bg-red-600"
+    variants={{
+      rest: { scaleX: 0 },
+      hover: { scaleX: 1 },
+    }}
+    transition={{
+      duration: 0.5,
+      ease: "easeInOut",
+    }}
+    style={{
+      originX: 0, // Animate from left to right
+      zIndex: 1,
+    }}
+  ></motion.div>
 
-                    <span className="relative z-10">Login</span>
-                  </motion.button>
+  <Link href="/login">
+    <span className="relative z-10">Login</span>
+  </Link>
+</motion.button>
+
         </div>
       </div>
     </div>

@@ -6,8 +6,8 @@ const FooterComponents = () => {
     <div className='bg-black w-full h-[16em] text-[#666666] grid grid-cols-3 '>
         
         <div className='px-10 py-10'>
-            <h1 className='text-[#FD3E12] text-lg font-semibold mb-5'>Cyclone Shield</h1>
-            <h3>Is a leading disaster response company specializing in providing innovative solutions and advanced technology to protect communities from the devastating impacts of cyclones and typhoons.
+            <h1 className='text-[#FD3E12] text-lg font-semibold mb-5'>GeoTyphoon</h1>
+            <h3>Merupakan website tanggap bencana terkemuka yang mengkhususkan diri dalam menyediakan solusi inovatif dan teknologi canggih untuk melindungi masyarakat dari dampak dahsyat siklon dan topan.
             </h3>
         </div>
         <div className='flex justify-center py-10'>
@@ -25,17 +25,17 @@ const FooterComponents = () => {
         <div className="space-y-4">
               <h3 className="text-lg font-semibold text-[#FD3E12]">Contact</h3>
               <p className="text-sm text-gray-400">
-                Email: <a href="mailto:info@yourcompany.com" className="hover:text-white">info@cycloneshield.com</a>
+                Email: <a href="mailto:info@yourcompany.com" className="hover:text-white">GeoTyphoon@gmail.com</a>
               </p>
-              <p className="text-sm text-gray-400">Phone: +1 234 567 890</p>
-              <p className="text-sm text-gray-400">Address: 123 Innovation Street, Tech City</p>
+              <p className="text-sm text-gray-400">Phone: +62 857 2944 7324</p>
+              <p className="text-sm text-gray-400">Address: Seturan, Yogyakarta</p>
         </div>
         </div>
         
         
     </div>
     <div className="bg-[#0F0F0F] py-4 text-center text-sm text-gray-500 ">
-            <p>&copy; {new Date().getFullYear()} Cyclone Shield. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} GeoTyphoon. by kelompok 7.</p>
         </div>
         
     </div>

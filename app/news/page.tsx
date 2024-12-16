@@ -210,7 +210,8 @@ const page = () => {
           className="bg-background"
         />
         <h1 className='absolute text-white font-extrabold text-[2em] w-[30em] bottom-0 left-10' data-aos="fade-up">
-          Legal cases against oil and gas companies for the loss and damage suffered by communities around the world are growing.
+          Topan Melanda: <span className="text-white">
+          Info Terkini, Tindakan Keselamatan, dan Evakuasi Darurat.</span>
         </h1>
       </div>
       <div className='w-full bg-white h-auto text-black px-10 py-20'>

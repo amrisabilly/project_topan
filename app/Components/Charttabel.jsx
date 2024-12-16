@@ -10,6 +10,9 @@ const SmoothChart = () => {
   const animationFrameRef = useRef();
   const chartInstanceRef = useRef(null);
 
+  // Nilai tukar USD ke IDR
+  const exchangeRate = 15000; // 1 USD = 15.000 IDR (contoh)
+
   useEffect(() => {
     const handleScroll = () => {
       if (!chartRef.current) return;
@@ -37,14 +40,14 @@ const SmoothChart = () => {
   }, []);
 
   useEffect(() => {
-    if (!chartRef.current) return; // Pastikan chartRef tidak null
+    if (!chartRef.current) return;
     const ctx = chartRef.current.getContext('2d');
 
     const initialData = {
       labels: ['2010', '2011', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
       datasets: [
-        { label: 'National', data: Array(15).fill(0), backgroundColor: '#FD3E12' },
-        { label: 'International', data: Array(15).fill(0), backgroundColor: '#FFE452' },
+        { label: 'National', data: Array(12).fill(0), backgroundColor: '#FD3E12' },
+        { label: 'International', data: Array(12).fill(0), backgroundColor: '#FFE452' },
       ],
     };
 
@@ -62,8 +65,8 @@ const SmoothChart = () => {
           x: { stacked: true, ticks: { color: '#FFFFFF' } },
           y: {
             stacked: true,
-            ticks: { color: '#FFFFFF', callback: (value) => `${value} Billion USD` },
-            title: { display: true, text: 'Billion USD', color: '#FFFFFF' },
+            ticks: { color: '#FFFFFF', callback: (value) => `Rp ${value.toLocaleString()}` },
+            title: { display: true, text: 'Kerugian (dalam Rupiah)', color: '#FFFFFF' },
           },
         },
         layout: { padding: 10 },
@@ -77,8 +80,13 @@ const SmoothChart = () => {
 
   useEffect(() => {
     if (chartInstanceRef.current) {
-      const actualDataNational = [2000, 1500, 2500, 2700, 2900, 3000, 3100, 2200, 1800, 2000, 2200, 2100, 1900, 2300, 3200];
-      const actualDataInternational = [1000, 500, 1000, 1200, 1100, 1200, 1300, 800, 700, 1000, 1200, 900, 800, 1000, 1500];
+      // Kerugian Nasional dan Internasional (Data Contoh dalam USD)
+      const actualDataNationalUSD = [10, 15, 20, 25, 30, 22, 18, 27, 21, 30, 40, 35]; // Kerugian Nasional dalam Billion USD
+      const actualDataInternationalUSD = [5, 8, 12, 15, 10, 8, 7, 12, 9, 14, 20, 18]; // Kerugian Internasional dalam Billion USD
+
+      // Mengonversi ke Rupiah
+      const actualDataNationalIDR = actualDataNationalUSD.map((value) => value * 1000000000 * exchangeRate); // Mengalikan dengan 1 milyar dan nilai tukar
+      const actualDataInternationalIDR = actualDataInternationalUSD.map((value) => value * 1000000000 * exchangeRate); // Mengalikan dengan 1 milyar dan nilai tukar
 
       const animate = () => {
         const delta = targetProgress - progress;
@@ -93,8 +101,9 @@ const SmoothChart = () => {
         const newProgress = progress + increment;
         setProgress(newProgress);
 
-        const newNationalData = actualDataNational.map((value) => value * newProgress);
-        const newInternationalData = actualDataInternational.map((value) => value * newProgress);
+        // Update data dengan progress animasi
+        const newNationalData = actualDataNationalIDR.map((value) => value * newProgress);
+        const newInternationalData = actualDataInternationalIDR.map((value) => value * newProgress);
 
         chartInstanceRef.current.data.datasets[0].data = newNationalData;
         chartInstanceRef.current.data.datasets[1].data = newInternationalData;
